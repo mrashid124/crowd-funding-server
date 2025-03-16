@@ -68,7 +68,7 @@ async function run() {
     app.post("/myDonate", async (req, res) => {
       try {
         const donate = req.body;
-        // console.log(donate);
+        console.log(donate);
         const result = await donateCollection.insertOne(donate);
         res.send(result);
       } catch (error) {
@@ -77,7 +77,7 @@ async function run() {
     });
 //  user donation by email
     app.get("/myDonate/:email", async (req, res) => {
-      const query = donateCollection.find({ email: req.params.user_email });
+      const query = donateCollection.find({ user_email: req.params.email });
       const result = await query.toArray();
       res.send(result);
     });
